@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,7 +19,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements OnNavigationItemSelectedListener
 {
 
     DrawerLayout drawerLayout;
@@ -33,7 +36,8 @@ public class MainActivity extends AppCompatActivity
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, (R.string.open_drawer), (R.string.close_drawer));
         drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();;
+        toggle.syncState();
+        ;
 
     }
 
@@ -62,5 +66,18 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
+    {
+        int id = item.getItemId();
+
+
+        if (id == R.id.action_settings)
+        {
+            return false;
+        }
+        return true;
     }
 }
